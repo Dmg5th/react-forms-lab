@@ -7,28 +7,29 @@ class LoginForm extends React.Component {
     this.state = {
       username: "",
       password: ""
-
-    };
   }
+}
 
-  handleChange = (event) => {
-    this.setState({
-      [event.target.name] : event.target.value
-    })
-  }
+handleChange = event => {
+  this.setState({
+    [event.target.name]: event.target.value
+  })
+}
 
-  handleSubmit = (e) => {
-    e.preventDefault();
-    if(this.state.username === "" || this.state.password === ""){
-      return "Please enter valid credentials"
-    } else {
-      this.props.handleLogin(this.state)
-    }
+submitForm = (event) => {
+  event.preventDefault(); 
+  if(this.state.username === "" || this.state.password === "") {
+    return 'You did something wrong yo'
+  } else {
+    return this.props.handleLogin(this.state);
   }
+}
+
+
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.submitForm} >
         <div>
           <label>
             Username
@@ -38,7 +39,7 @@ class LoginForm extends React.Component {
         <div>
           <label>
             Password
-            <input id="password" name="password" type="password" onChange={this.handleChange} value={this.state.password}/>
+            <input id="password" name="password" type="password" onChange={this.handleChange} value={this.state.password} />
           </label>
         </div>
         <div>
